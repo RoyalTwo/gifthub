@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+function Header() {
+    return <div></div>;
+}
+
+function ListItem() {
+    return (
+        <div className="ListItem">
+            <div className="itemname"></div>
+            <div className="itemlink"></div>
+            <input type="checkbox" className="ispurchased"></input>
+        </div>
+    );
+}
+
+function List() {
+    return (
+        <div>
+            <ListItem></ListItem>
+            <ListItem></ListItem>
+            <ListItem></ListItem>
+        </div>
+    );
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header className="Header"></Header>
+            <List className="List"></List>
+        </div>
+    );
 }
 
 export default App;
