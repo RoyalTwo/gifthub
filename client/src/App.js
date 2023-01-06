@@ -4,6 +4,34 @@ function Header() {
     return <div className="Header"></div>;
 }
 
+const data = [
+    {
+        name: "First",
+        link: "notfound.com",
+        checked: false,
+    },
+    {
+        name: "Second",
+        link: "notfound.com",
+        checked: false,
+    },
+    {
+        name: "Third",
+        link: "notfound.com",
+        checked: true,
+    },
+    {
+        name: "Fourth",
+        link: "notfound.com",
+        checked: true,
+    },
+    {
+        name: "Fifth",
+        link: "notfound.com",
+        checked: false,
+    },
+];
+
 function ListItem({ name, link, isPurchased }) {
     return (
         <div className="ListItem">
@@ -19,17 +47,14 @@ function ListItem({ name, link, isPurchased }) {
 }
 
 function List() {
-    return (
-        <div>
-            <ListItem
-                name="TestItem"
-                link="www.google.com"
-                isPurchased={true}
-            ></ListItem>
-            <ListItem></ListItem>
-            <ListItem></ListItem>
-        </div>
-    );
+    const content = data.map((item) => (
+        <ListItem
+            name={item.name}
+            link={item.link}
+            isPurchased={item.checked}
+        ></ListItem>
+    ));
+    return <div>{content}</div>;
 }
 
 function App() {

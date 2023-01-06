@@ -27,3 +27,7 @@
     background-color: grey;
     display: flex;
 }
+
+.itemname {
+    font-size: 48px;
+}
