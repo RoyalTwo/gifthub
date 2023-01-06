@@ -1,15 +1,19 @@
 import "./App.css";
 
 function Header() {
-    return <div></div>;
+    return <div className="Header"></div>;
 }
 
-function ListItem() {
+function ListItem({ name, link, isPurchased }) {
     return (
         <div className="ListItem">
-            <div className="itemname"></div>
-            <div className="itemlink"></div>
-            <input type="checkbox" className="ispurchased"></input>
+            <div className="itemname">{name}</div>
+            <div className="itemlink">{link}</div>
+            <input
+                type="checkbox"
+                className="ispurchased"
+                checked={isPurchased}
+            ></input>
         </div>
     );
 }
@@ -17,7 +21,11 @@ function ListItem() {
 function List() {
     return (
         <div>
-            <ListItem></ListItem>
+            <ListItem
+                name="TestItem"
+                link="www.google.com"
+                isPurchased={true}
+            ></ListItem>
             <ListItem></ListItem>
             <ListItem></ListItem>
         </div>
@@ -27,7 +35,7 @@ function List() {
 function App() {
     return (
         <div className="App">
-            <Header className="Header"></Header>
+            <Header></Header>
             <List className="List"></List>
         </div>
     );

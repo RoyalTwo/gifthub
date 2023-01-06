@@ -3,10 +3,27 @@
     height: 100vh;
     width: 100vw;
     background-color: #61dafb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Header {
     width: 100vw;
     height: 100px;
     background-color: black;
+}
+
+.List {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ListItem {
+    height: 150px;
+    border: 2px solid black;
+    width: 1000px;
+    background-color: grey;
+    display: flex;
 }
