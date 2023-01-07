@@ -56,7 +56,7 @@ function List() {
             key={index}
         ></ListItem>
     ));
-    return <div>{content}</div>;
+    return <div className="List">{content}</div>;
 }
 
 function Spoiler() {
@@ -89,7 +89,7 @@ function App({ login }) {
         <div className="App">
             {login ? "" : <Spoiler></Spoiler>}
             <Header></Header>
-            <List className="List"></List>
+            <List></List>
         </div>
     );
 }
