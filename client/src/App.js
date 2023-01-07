@@ -86,7 +86,7 @@ function Spoiler() {
 function App({ login }) {
     return (
         <div className="App">
-            <Spoiler></Spoiler>
+            {login ? "" : <Spoiler></Spoiler>}
             <Header></Header>
             <List className="List"></List>
         </div>
