@@ -96,3 +96,12 @@
 .listcard {
     box-shadow: 7px 8px 17px -7px rgba(189, 189, 189, 1);
 }
+
+.card-button-link {
+    color: black;
+}
+
+.card-button-link:hover {
+    color: black;
+    text-decoration: none;
+}

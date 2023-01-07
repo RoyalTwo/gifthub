@@ -4,173 +4,174 @@ import logo from "./gifthub_logo.jpeg";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
+import test from './gifthub_logo.jpeg';
 
 function Header() {
-    const [modalOpened, setModalOpened] = useState(false);
+  const [modalOpened, setModalOpened] = useState(false);
 
-    return (
-        <div className="Header">
-            <img src={logo} alt="Really cool logo" className="logo" />
-            <div className="submitBtn">
-                <p onClick={() => setModalOpened(true)}>+</p>
+  return (
+    <div className="Header">
+      <img src={logo} alt="Really cool logo" className="logo" />
+      <div className="submitBtn">
+        <p onClick={() => setModalOpened(true)}>+</p>
 
-                <Modal show={modalOpened} onHide={() => setModalOpened(false)}>
-                    <Modal.Header>
-                        <Modal.Title>Add an item</Modal.Title>
-                    </Modal.Header>
+        <Modal show={modalOpened} onHide={() => setModalOpened(false)}>
+          <Modal.Header>
+            <Modal.Title>Add an item</Modal.Title>
+          </Modal.Header>
 
-                    <Modal.Body>
-                        <form>
-                            <div className="form-group">
-                                <label htmlFor="productName">
-                                    Product Name
-                                </label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="productNameInput"
-                                    placeholder="Enter Name"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="productLink">
-                                    Link to Product
-                                </label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="productLinkInput"
-                                    placeholder="Enter Link"
-                                />
-                            </div>
-                        </form>
-                    </Modal.Body>
+          <Modal.Body>
+            <form>
+              <div className="form-group">
+                <label htmlFor="productName">
+                  Product Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="productNameInput"
+                  placeholder="Enter Name"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="productLink">
+                  Link to Product
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="productLinkInput"
+                  placeholder="Enter Link"
+                />
+              </div>
+            </form>
+          </Modal.Body>
 
-                    <Modal.Footer>
-                        <Button
-                            variant="secondary"
-                            onClick={() => setModalOpened(false)}
-                        >
-                            Close
-                        </Button>
-                        <Button variant="primary">Save Changes</Button>
-                    </Modal.Footer>
-                </Modal>
-            </div>
-        </div>
-    );
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setModalOpened(false)}
+            >
+              Close
+            </Button>
+            <Button variant="primary">Save Changes</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    </div>
+  );
 }
 const users = [
-    {
-        _id: 1,
-        name: "Tyler",
-        password: "1234",
-    },
-    {
-        _id: 2,
-        name: "Angela",
-        password: "2323",
-    },
-    {
-        _id: 3,
-        name: "Bob",
-        password: "3232",
-    },
+  {
+    _id: 1,
+    name: "Tyler",
+    password: "1234",
+  },
+  {
+    _id: 2,
+    name: "Angela",
+    password: "2323",
+  },
+  {
+    _id: 3,
+    name: "Bob",
+    password: "3232",
+  },
 ];
-const data = [
-    {
-        _id: "1234",
-        userId: "1",
-        list: [
-            {
-                name: "First",
-                link: "https://discord.com/channels/1045024966321651762/1045037247797399562",
-                checked: false,
-            },
-            {
-                name: "Second",
-                link: "notfound.com",
-                checked: false,
-            },
-            {
-                name: "Third",
-                link: "notfound.com",
-                checked: true,
-            },
-            {
-                name: "Fourth",
-                link: "notfound.com",
-                checked: true,
-            },
-            {
-                name: "Fifth",
-                link: "notfound.com",
-                checked: false,
-            },
-        ],
-    },
-    {
-        _id: "2345",
-        userId: "2",
-        list: [
-            {
-                name: "Sixth",
-                link: "notfound.com",
-                checked: false,
-            },
-            {
-                name: "Seventh",
-                link: "notfound.com",
-                checked: false,
-            },
-            {
-                name: "Eigth",
-                link: "notfound.com",
-                checked: true,
-            },
-            {
-                name: "Ninth",
-                link: "notfound.com",
-                checked: true,
-            },
-            {
-                name: "Tenth",
-                link: "notfound.com",
-                checked: false,
-            },
-        ],
-    },
-    {
-        _id: "3456",
-        userId: "3",
-        list: [
-            {
-                name: "Eleventh",
-                link: "notfound.com",
-                checked: false,
-            },
-            {
-                name: "Twelfth",
-                link: "notfound.com",
-                checked: false,
-            },
-            {
-                name: "Thirteenth",
-                link: "notfound.com",
-                checked: true,
-            },
-            {
-                name: "Fourteenth",
-                link: "notfound.com",
-                checked: true,
-            },
-            {
-                name: "Fifteenth",
-                link: "notfound.com",
-                checked: false,
-            },
-        ],
-    },
+const lists = [
+  {
+    _id: "1234",
+    userId: "1",
+    list: [
+      {
+        name: "First",
+        link: "https://discord.com/channels/1045024966321651762/1045037247797399562",
+        checked: false,
+      },
+      {
+        name: "Second",
+        link: "notfound.com",
+        checked: false,
+      },
+      {
+        name: "Third",
+        link: "notfound.com",
+        checked: true,
+      },
+      {
+        name: "Fourth",
+        link: "notfound.com",
+        checked: true,
+      },
+      {
+        name: "Fifth",
+        link: "notfound.com",
+        checked: false,
+      },
+    ],
+  },
+  {
+    _id: "2345",
+    userId: "1",
+    list: [
+      {
+        name: "Sixth",
+        link: "notfound.com",
+        checked: false,
+      },
+      {
+        name: "Seventh",
+        link: "notfound.com",
+        checked: false,
+      },
+      {
+        name: "Eigth",
+        link: "notfound.com",
+        checked: true,
+      },
+      {
+        name: "Ninth",
+        link: "notfound.com",
+        checked: true,
+      },
+      {
+        name: "Tenth",
+        link: "notfound.com",
+        checked: false,
+      },
+    ],
+  },
+  {
+    _id: "3456",
+    userId: "1",
+    list: [
+      {
+        name: "Eleventh",
+        link: "notfound.com",
+        checked: false,
+      },
+      {
+        name: "Twelfth",
+        link: "notfound.com",
+        checked: false,
+      },
+      {
+        name: "Thirteenth",
+        link: "notfound.com",
+        checked: true,
+      },
+      {
+        name: "Fourteenth",
+        link: "notfound.com",
+        checked: true,
+      },
+      {
+        name: "Fifteenth",
+        link: "notfound.com",
+        checked: false,
+      },
+    ],
+  },
 ];
 
 //Is a class so that we can use state to make invisible or not
@@ -178,147 +179,162 @@ const data = [
 // i know it doesn't make sense but keep it
 // PLEASE
 class ListItem extends React.Component {
-    //Removes a list item ONLY in front end (for right now)
-    removeListItem() {
-        this.setState({ visibility: "none" });
-    }
+  //Removes a list item ONLY in front end (for right now)
+  removeListItem() {
+    this.setState({ visibility: "none" });
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            visibility: true,
-        };
-        this.removeListItem = this.removeListItem.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      visibility: true,
+    };
+    this.removeListItem = this.removeListItem.bind(this);
+  }
 
-    render() {
-        return (
-            <div
-                style={{ display: this.state.visibility }}
-                className="card w-75 mb-3 ListItem"
-            >
-                <div className="card-body">
-                    <h5 className="card-title">{this.props.name}</h5>
-                    <div className="card-text">
-                        <a href={this.props.link}>{this.props.link}</a>
-                    </div>
-                </div>
-                {this.props.isOwner ? (
-                    <button
-                        type="button"
-                        className="btn btn-outline-danger checkbox"
-                        onClick={this.removeListItem}
-                    >
-                        Delete
-                    </button>
-                ) : (
-                    <button
-                        type="button"
-                        className={
-                            this.props.isPurchased
-                                ? "btn btn-outline-success checkbox active"
-                                : "btn btn-outline-success checkbox"
-                        }
-                        data-bs-toggle="button"
-                        checked={true}
-                    >
-                        Check
-                    </button>
-                )}
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div
+        style={{ display: this.state.visibility }}
+        className="card w-75 mb-3 ListItem"
+      >
+        <div className="card-body">
+          <h5 className="card-title">{this.props.name}</h5>
+          <div className="card-text">
+            <a href={this.props.link}>{this.props.link}</a>
+          </div>
+        </div>
+        {this.props.isOwner ? (
+          <button
+            type="button"
+            className="btn btn-outline-danger checkbox"
+            onClick={this.removeListItem}
+          >
+            Delete
+          </button>
+        ) : (
+          <button
+            type="button"
+            className={
+              this.props.isPurchased
+                ? "btn btn-outline-success checkbox active"
+                : "btn btn-outline-success checkbox"
+            }
+            data-bs-toggle="button"
+            checked={true}
+          >
+            Check
+          </button>
+        )}
+      </div>
+    );
+  }
 }
 
 function List({ loginInfo, listId }) {
-    let content;
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].userId === loginInfo.userId && data[i]._id === listId) {
-            content = data[i].list.map((item, index) => (
-                <ListItem
-                    name={item.name}
-                    link={item.link}
-                    isPurchased={item.checked}
-                    key={index}
-                    loginInfo={loginInfo}
-                    isOwner={true}
-                ></ListItem>
-            ));
-        } else if (data[i]._id === listId) {
-            content = data[i].list.map((item, index) => (
-                <ListItem
-                    name={item.name}
-                    link={item.link}
-                    isPurchased={item.checked}
-                    key={index}
-                    loginInfo={loginInfo}
-                    isOwner={false}
-                ></ListItem>
-            ));
-        }
+  let content;
+  for (let i = 0; i < lists.length; i++) {
+    if (lists[i].userId === loginInfo.userId && lists[i]._id === listId) {
+      content = lists[i].list.map((item, index) => (
+        <ListItem
+          name={item.name}
+          link={item.link}
+          isPurchased={item.checked}
+          key={index}
+          loginInfo={loginInfo}
+          isOwner={true}
+        ></ListItem>
+      ));
+    } else if (lists[i]._id === listId) {
+      content = lists[i].list.map((item, index) => (
+        <ListItem
+          name={item.name}
+          link={item.link}
+          isPurchased={item.checked}
+          key={index}
+          loginInfo={loginInfo}
+          isOwner={false}
+        ></ListItem>
+      ));
     }
+  }
 
-    return <div className="List">{content}</div>;
+  return <div className="List">{content}</div>;
 }
 
 function Spoiler() {
-    const [hideState, setHideState] = useState(false);
+  const [hideState, setHideState] = useState(false);
 
-    if (hideState) {
-        return <div></div>;
-    } else {
-        return (
-            <div className="modal">
-                <h1>Spoiler:</h1>
-                <p>
-                    This is a warning - the following page displays which items
-                    have been purchased.
-                </p>
-                <p>
-                    If you do not wish to be spoiled, turn back! Otherwise,
-                    continue.
-                </p>
-                <button className="continue" onClick={() => setHideState(true)}>
-                    Continue
-                </button>
-            </div>
-        );
+  if (hideState) {
+    return <div></div>;
+  } else {
+    return (
+      <div className="modal">
+        <h1>Spoiler:</h1>
+        <p>
+          This is a warning - the following page displays which items
+          have been purchased.
+        </p>
+        <p>
+          If you do not wish to be spoiled, turn back! Otherwise,
+          continue.
+        </p>
+        <button className="continue" onClick={() => setHideState(true)}>
+          Continue
+        </button>
+      </div>
+    );
+  }
+}
+
+function findListsByUserId(userId) {
+  let output = [];
+  for (let i = 0; i < lists.length; i++) {
+    if (userId === lists[i].userId) {
+      output.push(lists[i])
     }
+  }
+
+  return output;
 }
 
-function ListList({ loginInfo }) {
-    return (
-        <div className="row">
-            <div className="col-sm-6">
-                <Card
-                    style={{ width: "50%", height: "400px" }}
-                    className="listcard"
-                >
-                    <Card.Body>
-                        <Card.Title as={"h3"}>List ID</Card.Title>
-                        <Button variant="primary">Select</Button>
-                    </Card.Body>
-                </Card>
-            </div>
-        </div>
-    );
+function ListList({ loginInfo, listToDisplay }) {
+  return (
+      <div className="col-sm-3">
+        <Card
+          style={{ width: "100%", height: "400px" }}
+          className="listcard"
+        >
+          <Card.Body>
+            <Card.Img varient="top" src={test}></Card.Img>
+            <Card.Title as={"h3"}>{listToDisplay._id}</Card.Title>
+            <Button variant="primary"><a href={'/?listId=' + listToDisplay._id} className="card-button-link">Select</a></Button>
+          </Card.Body>
+        </Card>
+      </div>
+  );
 }
+
 function App({ login }) {
-    const queryParameters = new URLSearchParams(window.location.search);
-    const listId = queryParameters.get("listId");
-    const content = listId ? (
-        <List loginInfo={login} listId={listId}></List>
-    ) : (
-        <ListList loginInfo={login}></ListList>
-    );
-    return (
-        <div className="App">
-            {login ? "" : <Spoiler></Spoiler>}
-            <Header></Header>
-            {content}
-        </div>
-    );
-    // <List loginInfo={login} listId={listId}></List>
+  const queryParameters = new URLSearchParams(window.location.search);
+  const listId = queryParameters.get("listId");
+  const listsToDisplay = findListsByUserId(login.userId);
+
+  const content = listId ? (
+    <List loginInfo={login} listId={listId}></List>
+  ) : (
+    listsToDisplay.map((item, index) => (<ListList loginInfo={login} listToDisplay={item}></ListList>))
+  );
+  return (
+    <div className="App">
+      {login ? "" : <Spoiler></Spoiler>}
+      <Header></Header>
+      <div className="row">
+        {content}
+      </div>
+    </div>
+  );
+  // <List loginInfo={login} listId={listId}></List>
 }
 
 export default App;
