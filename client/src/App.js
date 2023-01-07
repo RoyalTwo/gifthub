@@ -78,8 +78,8 @@ const users = [
 ];
 const data = [
     {
-        owner: "Jimbo",
-        listId: "1234",
+        _id: "1234",
+        userId: 1,
         list: [
             {
                 name: "First",
@@ -109,8 +109,8 @@ const data = [
         ],
     },
     {
-        owner: "Owner1",
-        listId: "2345",
+        _id: '2345',
+        userId: 2,
         list: [
             {
                 name: "Sixth",
@@ -140,8 +140,8 @@ const data = [
         ],
     },
     {
-        owner: "Owner2",
-        listId: "3456",
+        _id: "3456",
+        userId: 3,
         list: [
             {
                 name: "Eleventh",
