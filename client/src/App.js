@@ -62,30 +62,98 @@ function Header() {
 
 const data = [
     {
-        name: "First",
-        link: "notfound.com",
-        checked: false,
+        owner: 'Jimbo',
+        listId: '1234',
+        list: [
+            {
+                name: "First",
+                link: "https://discord.com/channels/1045024966321651762/1045037247797399562",
+                checked: false,
+            },
+            {
+                name: "Second",
+                link: "notfound.com",
+                checked: false,
+            },
+            {
+                name: "Third",
+                link: "notfound.com",
+                checked: true,
+            },
+            {
+                name: "Fourth",
+                link: "notfound.com",
+                checked: true,
+            },
+            {
+                name: "Fifth",
+                link: "notfound.com",
+                checked: false,
+            },
+        ]
     },
     {
-        name: "Second",
-        link: "notfound.com",
-        checked: false,
+        owner: 'Owner1',
+        listId: '2345',
+        list: [
+        {
+            name: "Sixth",
+            link: "notfound.com",
+            checked: false,
+        },
+        {
+            name: "Seventh",
+            link: "notfound.com",
+            checked: false,
+        },
+        {
+            name: "Eigth",
+            link: "notfound.com",
+            checked: true,
+        },
+        {
+            name: "Ninth",
+            link: "notfound.com",
+            checked: true,
+        },
+        {
+            name: "Tenth",
+            link: "notfound.com",
+            checked: false,
+        },
+        ]
     },
     {
-        name: "Third",
-        link: "notfound.com",
-        checked: true,
-    },
-    {
-        name: "Fourth",
-        link: "notfound.com",
-        checked: true,
-    },
-    {
-        name: "Fifth",
-        link: "notfound.com",
-        checked: false,
-    },
+        owner: 'Owner2',
+        listId: '3456',
+        list: [
+        {
+            name: "Eleventh",
+            link: "notfound.com",
+            checked: false,
+        },
+        {
+            name: "Twelfth",
+            link: "notfound.com",
+            checked: false,
+        },
+        {
+            name: "Thirteenth",
+            link: "notfound.com",
+            checked: true,
+        },
+        {
+            name: "Fourteenth",
+            link: "notfound.com",
+            checked: true,
+        },
+        {
+            name: "Fifteenth",
+            link: "notfound.com",
+            checked: false,
+        },
+        ]
+    }    
 ];
 
 //Is a class so that we can use state to make invisible or not
@@ -114,9 +182,9 @@ class ListItem extends React.Component {
             >
                 <div className="card-body">
                     <h5 className="card-title">{this.props.name}</h5>
-                    <div className="card-text">{this.props.link}</div>
+                    <div className="card-text"><a href={this.props.link}>{this.props.link}</a></div>
                 </div>
-                {this.props.loginInfo.listOwner ? (
+                {this.props.isOwner ? (
                     <button
                         type="button"
                         className="btn btn-outline-danger checkbox"
@@ -143,17 +211,36 @@ class ListItem extends React.Component {
     }
 }
 
-function List({ loginInfo }) {
-    const content = data.map((item, index) => (
-        <ListItem
-            name={item.name}
-            link={item.link}
-            isPurchased={item.checked}
-            key={index}
-            loginInfo={loginInfo}
-            counter={0}
-        ></ListItem>
-    ));
+function List({ loginInfo, listId }) {
+    let content;
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].owner === loginInfo.username && data[i].listId === listId) {
+            content = data[i].list.map((item, index) => (
+                <ListItem
+                    name={item.name}
+                    link={item.link}
+                    isPurchased={item.checked}
+                    key={index}
+                    loginInfo={loginInfo}
+                    counter={0}
+                    isOwner={true}
+                ></ListItem>
+            ));
+        } else if (data[i].listId === listId) {
+            content = data[i].list.map((item, index) => (
+                <ListItem
+                    name={item.name}
+                    link={item.link}
+                    isPurchased={item.checked}
+                    key={index}
+                    loginInfo={loginInfo}
+                    counter={0}
+                    isOwner={false}
+                ></ListItem>
+            ));
+        }
+    }
+
     return <div className="List">{content}</div>;
 }
 
@@ -183,11 +270,13 @@ function Spoiler() {
 }
 
 function App({ login }) {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const listId = queryParameters.get('listId')
     return (
         <div className="App">
             {login ? "" : <Spoiler></Spoiler>}
             <Header></Header>
-            <List loginInfo={login}></List>
+            <List loginInfo={login} listId = {listId}></List>
         </div>
     );
 }
