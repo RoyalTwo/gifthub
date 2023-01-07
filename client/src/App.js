@@ -6,11 +6,23 @@ function Header() {
     return (
         <div className="Header">
             <img src={logo} alt="Really cool logo" className="logo" />
-            <div className="submitBtn">
-                <p>+</p>
-            </div>
+            <SubmitButton></SubmitButton>
         </div>
     );
+}
+
+function SubmitButton() {
+    const [modalOpened, setModalOpened] = useState(false);
+    return (
+        <div className="submitBtn">
+            <p onClick={() => setModalOpened(true)}>+</p>
+            {modalOpened ? <SubmitModal></SubmitModal> : null}
+        </div>
+    );
+}
+
+function SubmitModal() {
+    return <div className="submitModal modal">This is the submit modal</div>;
 }
 
 const data = [
@@ -43,9 +55,11 @@ const data = [
 
 function ListItem({ name, link, isPurchased }) {
     return (
-        <div className="ListItem">
-            <div className="itemname">{name}</div>
-            <div className="itemlink">{link}</div>
+        <div className="card w-75 mb-3">
+            <div className="card-body">
+                <div className="card-title">{name}</div>
+                <div className="card-text">{link}</div>
+            </div>
             <label>
                 <input
                     type="checkbox"
