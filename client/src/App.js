@@ -1,28 +1,44 @@
 import "./App.css";
 import React, { useState } from "react";
 import logo from "./gifthub_logo.jpeg";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function Header() {
+  const [modalOpened, setModalOpened] = useState(false);
+
   return (
     <div className="Header">
       <img src={logo} alt="Really cool logo" className="logo" />
-      <SubmitButton></SubmitButton>
+      <div className="submitBtn">
+        <p onClick={() => setModalOpened(true)}>+</p>
+
+        <Modal show={modalOpened} onHide={() => setModalOpened(false)}>
+          <Modal.Header>
+            <Modal.Title>Add an item</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <form>
+              <div className="form-group">
+                <label for='productName'>Product Name</label>
+                <input type='text' class='form-control' id='productNameInput' placeHolder='Enter Name' />
+              </div>
+              <div className="form-group">
+                <label for='productLink'>Link to Product</label>
+                <input type='text' className='form-control' id='productLinkInput' placeholder="Enter Link" />
+              </div>
+            </form>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setModalOpened(false)}>Close</Button>
+            <Button variant="primary">Save Changes</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </div>
   );
-}
-
-function SubmitButton() {
-  const [modalOpened, setModalOpened] = useState(false);
-  return (
-    <div className="submitBtn">
-      <p onClick={() => setModalOpened(true)}>+</p>
-      {modalOpened ? <SubmitModal></SubmitModal> : null}
-    </div>
-  );
-}
-
-function SubmitModal() {
-  return <div className="submitModal modal">This is the submit modal</div>;
 }
 
 const data = [
@@ -53,6 +69,7 @@ const data = [
   },
 ];
 
+//Is a class so that we can use state to make invisible or not
 class ListItem extends React.Component {
   //Removes a list item ONLY in front end (for right now)
   removeListItem() {
