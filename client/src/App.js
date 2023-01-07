@@ -79,7 +79,7 @@ const users = [
 const data = [
     {
         _id: "1234",
-        userId: 1,
+        userId: '1',
         list: [
             {
                 name: "First",
@@ -110,7 +110,7 @@ const data = [
     },
     {
         _id: '2345',
-        userId: 2,
+        userId: '2',
         list: [
             {
                 name: "Sixth",
@@ -141,7 +141,7 @@ const data = [
     },
     {
         _id: "3456",
-        userId: 3,
+        userId: '3',
         list: [
             {
                 name: "Eleventh",
@@ -232,7 +232,7 @@ class ListItem extends React.Component {
 function List({ loginInfo, listId }) {
     let content;
     for (let i = 0; i < data.length; i++) {
-        if (data[i].owner === loginInfo.username && data[i].listId === listId) {
+        if (data[i].userId === loginInfo.userId && data[i]._id === listId) {
             content = data[i].list.map((item, index) => (
                 <ListItem
                     name={item.name}
@@ -244,7 +244,7 @@ function List({ loginInfo, listId }) {
                     isOwner={true}
                 ></ListItem>
             ));
-        } else if (data[i].listId === listId) {
+        } else if (data[i]._id === listId) {
             content = data[i].list.map((item, index) => (
                 <ListItem
                     name={item.name}
