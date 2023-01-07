@@ -12,6 +12,8 @@
     height: 100px;
     background-color: black;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .List {
@@ -46,28 +48,28 @@
 }
 
 .uncheckedbox {
-  width: 20px;
-  height: 20px;
-  background-color: #FFFFFF;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
 }
 
 .hidethis {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0px;
-  width: 0px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0px;
+    width: 0px;
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
-  background-color: #FFFFFF;
-  border: 2px solid white;
-  cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border: 2px solid white;
+    cursor: pointer;
 }
 
 .hidethis:checked ~ .checkbox {
-  border: 2px solid white;
-  background-color: seagreen;
+    border: 2px solid white;
+    background-color: seagreen;
 }

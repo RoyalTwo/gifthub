@@ -2,7 +2,11 @@ import "./App.css";
 import { useState } from "react";
 
 function Header() {
-    return <div className="Header"></div>;
+    return (
+        <div className="Header">
+            <div className="submitbtn">+</div>
+        </div>
+    );
 }
 
 const data = [
@@ -39,11 +43,12 @@ function ListItem({ name, link, isPurchased }) {
             <div className="itemname">{name}</div>
             <div className="itemlink">{link}</div>
             <label>
-              <input type="checkbox" 
-                className = 'hidethis'
-                checked = {isPurchased ? 'checked' : null}
-              />
-              <div className='checkbox' />
+                <input
+                    type="checkbox"
+                    className="hidethis"
+                    checked={isPurchased ? "checked" : null}
+                />
+                <div className="checkbox" />
             </label>
         </div>
     );
