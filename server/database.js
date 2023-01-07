@@ -43,6 +43,47 @@ function showErrorMessage(message) {
   form.insertBefore(errorMessage, formControls);
 }
 
+function isValidUserName(userName) {
+  // check if the user name is not empty
+  if (userName.trim().length === 0) {
+    return false;
+  }
+
+  // check if the user name is not too long
+  if (userName.length > 50) {
+    return false;
+  }
+
+  // check if the user name contains only alphanumeric characters and underscores
+  if (!/^\w+$/.test(userName)) {
+    return false;
+  }
+
+  // the user name is valid
+  return true;
+}
+
+function isValidPassword(password) {
+  // check if the password is not empty
+  if (password.trim().length === 0) {
+    return false;
+  }
+
+  // check if the password is at least 8 characters long
+  if (password.length < 8) {
+    return false;
+  }
+
+  // check if the password contains at least one uppercase letter, one lowercase letter, and one digit
+  if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/.test(password)) {
+    return false;
+  }
+
+  // the password is valid
+  return true;
+}
+
+
 form.addEventListener('submit', function(event) {
   // prevent the form from being submitted
   event.preventDefault();
@@ -53,11 +94,13 @@ form.addEventListener('submit', function(event) {
 
   // validate the input values
   if (!isValidUserName(userName)) {
-    // display an error message if the email is not valid
-      showErrorMessage('Invalid email.');
+    // display an error message if the username is not valid
+      showErrorMessage('Invalid username.');
+      return;
   } else if (!isValidPassword(password)) {
     // display an error message if the password is not valid
       showErrorMessage('Invalid password.');
+      return;
   } else {
     // find the user in the database
     User.findOne({ userName: userName }, function(error, user) {
@@ -82,4 +125,29 @@ form.addEventListener('submit', function(event) {
       }
     });
   }
+});
+form.addEventListener('submit', (event) => {
+  // prevent the default form submission behavior
+  event.preventDefault();
+
+  // get the form data
+  const data = new FormData(form);
+
+  // create a new list item
+  const listItem = new List({
+    name: data.get('name'),
+    link: data.get('link'),
+    checked: data.get('checked')
+  });
+
+  // save the list item to the database
+  listItem.save((error, item) => {
+    if (error) {
+      // handle the error
+        console.error(error);
+    } else {
+      // the list item was saved successfully
+        console.log(item);
+    }
+  });
 });
