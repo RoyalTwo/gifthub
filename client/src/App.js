@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import logo from "./gifthub_logo.jpeg";
 
 function Header() {
@@ -53,16 +53,25 @@ const data = [
   },
 ];
 
-function ListItem({ name, link, isPurchased, loginInfo }) {
-  return (
-    <div className="card w-75 mb-3 ListItem">
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <div className="card-text">{link}</div>
+class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visibility: true
+    }
+  }
+
+  render() {
+    return (
+      <div style={{ display: this.state.visibility }} className="card w-75 mb-3 ListItem">
+        <div className="card-body">
+          <h5 className="card-title">{this.props.name}</h5>
+          <div className="card-text">{this.props.link}</div>
+        </div>
+        {this.props.loginInfo.listOwner ? <button type="button" className="btn btn-outline-danger checkbox" onClick={() => this.setState({visibility: 'none'})}>Delete</button> : <button type="button" className={this.props.isPurchased ? "btn btn-outline-success checkbox active" : "btn btn-outline-success checkbox"} data-bs-toggle="button">Check</button>}
       </div>
-      {loginInfo.listOwner ? <button type="button" className="btn btn-outline-danger checkbox">Delete</button> : <button type="button" className={isPurchased ? "btn btn-outline-success checkbox active" : "btn btn-outline-success checkbox"} data-bs-toggle="button">Check</button>}
-    </div>
-  );
+    );
+  }
 }
 
 function List({ loginInfo }) {
@@ -73,6 +82,7 @@ function List({ loginInfo }) {
       isPurchased={item.checked}
       key={index}
       loginInfo={loginInfo}
+      counter={0}
     ></ListItem>
   ));
   return <div className="List">{content}</div>;
