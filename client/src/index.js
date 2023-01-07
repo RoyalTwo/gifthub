@@ -7,8 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 const test = prompt("userId");
 let user;
 user = {
-    userId: test
-}
+    userId: test,
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
