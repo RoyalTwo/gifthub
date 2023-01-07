@@ -4,7 +4,7 @@ import logo from "./gifthub_logo.jpeg";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
-import test from './gifthub_logo.jpeg';
+const images = [require('./gifthub_present_1.png')]
 
 function Header({ listId, isOwner }) {
   const [modalOpened, setModalOpened] = useState(false);
@@ -122,6 +122,8 @@ const lists = [
   {
     _id: "1234",
     userId: "1",
+    name: "One",
+    imgIndex: 0,
     list: [
       {
         name: "First",
@@ -153,6 +155,8 @@ const lists = [
   {
     _id: "2345",
     userId: "1",
+    name: "Two",
+    imgIndex: 0,
     list: [
       {
         name: "Sixth",
@@ -183,7 +187,9 @@ const lists = [
   },
   {
     _id: "3456",
-    userId: "1",
+    userId: "2",
+    name: 'Three',
+    imgIndex: 0,
     list: [
       {
         name: "Eleventh",
@@ -346,8 +352,8 @@ function ListList({ loginInfo, listToDisplay }) {
         className="listcard"
       >
         <Card.Body>
-          <Card.Img varient="top" src={test}></Card.Img>
-          <Card.Title as={"h3"}>{listToDisplay._id}</Card.Title>
+          <Card.Img varient="top" src={images[listToDisplay.imgIndex]}></Card.Img>
+          <Card.Title as={"h3"}>{listToDisplay.name}</Card.Title>
           <Button variant="primary"><a href={'/?listId=' + listToDisplay._id} className="card-button-link">Select</a></Button>
         </Card.Body>
       </Card>
