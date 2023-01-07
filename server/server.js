@@ -5,6 +5,31 @@ const bodyParser = require('body-parser');
 // use the body-parser middleware to parse the request body
 app.use(bodyParser.json());
 
+// define a user schema
+const userSchema = new mongoose.Schema({
+  userName: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
+
+// create a model from the schema
+const User = mongoose.model('User', userSchema);
+
+// define the list schema
+const listSchema = new mongoose.Schema({
+  userID: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
+  items: [
+    {
+      name: { type: String, required: true },
+      link: { type: String },
+      checked: { type: Boolean, default: false }
+    }
+  ]
+});
+
+// create a model from the schema
+const List = mongoose.model('List', listSchema);
+// attach an event listener to the login form
+
 function isValidUserName(userName) {
   // check if the user name is not empty
   if (userName.trim().length === 0) {
