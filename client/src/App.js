@@ -38,11 +38,13 @@ function ListItem({ name, link, isPurchased }) {
         <div className="ListItem">
             <div className="itemname">{name}</div>
             <div className="itemlink">{link}</div>
-            <input
-                type="checkbox"
-                className="ispurchased"
-                checked={isPurchased}
-            ></input>
+            <label>
+              <input type="checkbox" 
+                class = 'hidethis'
+                checked = {isPurchased ? 'checked' : null}
+              />
+              <div class='checkbox' />
+            </label>
         </div>
     );
 }
