@@ -21,16 +21,16 @@ function Header() {
                     <Modal.Body>
                         <form>
                             <div className="form-group">
-                                <label for="productName">Product Name</label>
+                                <label htmlFor="productName">Product Name</label>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="productNameInput"
-                                    placeHolder="Enter Name"
+                                    placeholder="Enter Name"
                                 />
                             </div>
                             <div className="form-group">
-                                <label for="productLink">Link to Product</label>
+                                <label htmlFor="productLink">Link to Product</label>
                                 <input
                                     type="text"
                                     className="form-control"
