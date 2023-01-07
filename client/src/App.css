@@ -12,6 +12,8 @@
     min-height: 80px;
     background-color: black;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo {
@@ -50,11 +52,11 @@
 }
 
 .hidethis {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0px;
-  width: 0px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0px;
+    width: 0px;
 }
 
 .checkbox {
