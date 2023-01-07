@@ -21,7 +21,9 @@ function Header() {
                     <Modal.Body>
                         <form>
                             <div className="form-group">
-                                <label htmlFor="productName">Product Name</label>
+                                <label htmlFor="productName">
+                                    Product Name
+                                </label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -30,7 +32,9 @@ function Header() {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="productLink">Link to Product</label>
+                                <label htmlFor="productLink">
+                                    Link to Product
+                                </label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -129,6 +133,7 @@ class ListItem extends React.Component {
                                 : "btn btn-outline-success checkbox"
                         }
                         data-bs-toggle="button"
+                        checked={true}
                     >
                         Check
                     </button>
