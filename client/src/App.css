@@ -17,7 +17,27 @@
 }
 
 .logo {
-  height: 80px;
+    height: 80px;
+}
+
+.submitBtn {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitBtn p {
+    font-size: 56px;
+    color: white;
+    transition: all 0.15s;
+    cursor: pointer;
+}
+
+.submitBtn p:hover {
+    font-size: 75px;
 }
 
 .List {
@@ -60,13 +80,13 @@
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
-  background-color: #FFFFFF;
-  cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    cursor: pointer;
 }
 
 .hidethis:checked ~ .checkbox {
-  background-image: url('./checkbox.gif');
-  background-size: 20px;
+    background-image: url("./checkbox.gif");
+    background-size: 20px;
 }
