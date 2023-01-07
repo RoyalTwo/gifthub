@@ -80,13 +80,14 @@
 }
 
 .checkbox {
-    width: 20px;
-    height: 20px;
-    background-color: #ffffff;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-image: url('./unchecked.png');
+  background-size: 20px;
+  cursor: pointer;
 }
 
 .hidethis:checked ~ .checkbox {
-    background-image: url("./checkbox.gif");
-    background-size: 20px;
+  background-image: url('./checked.png');
+  background-size: 20px;
 }
