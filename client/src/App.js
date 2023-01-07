@@ -40,10 +40,10 @@ function ListItem({ name, link, isPurchased }) {
             <div className="itemlink">{link}</div>
             <label>
               <input type="checkbox" 
-                class = 'hidethis'
+                className = 'hidethis'
                 checked = {isPurchased ? 'checked' : null}
               />
-              <div class='checkbox' />
+              <div className='checkbox' />
             </label>
         </div>
     );
