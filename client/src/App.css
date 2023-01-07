@@ -84,8 +84,8 @@
     border-top-right-radius: 0px;
 }
 
-.hidethis:checked ~ .checkbox {
-    background-image: url("./checked.png");
+.hidethis:checked~.checkbox {
+    background-image: url("./art/checked.png");
     background-size: 20px;
 }
 
@@ -98,10 +98,14 @@
 }
 
 .card-button-link {
-    color: black;
+    color: white;
 }
 
 .card-button-link:hover {
-    color: black;
+    color: white;
     text-decoration: none;
+}
+
+.list-list-image {
+    width: 200px;
 }
