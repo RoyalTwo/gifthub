@@ -42,6 +42,7 @@
 }
 
 .List {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,13 +51,7 @@
 }
 
 .ListItem {
-    height: 125px;
-    border: 0px solid;
-    border-radius: 15px;
-    width: 700px;
-    background-color: rgb(231, 231, 231);
-    display: flex;
-    box-shadow: 11px 10px 31px -11px rgba(41, 41, 41, 0.75);
+    box-shadow: 5px 7px 15px -6px rgba(133, 133, 133, 1);
 }
 
 .itemname {
@@ -81,14 +76,12 @@
 }
 
 .checkbox {
-  width: 20px;
-  height: 20px;
-  background-image: url('./unchecked.png');
-  background-size: 20px;
-  cursor: pointer;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-sizing: content-box;
 }
 
 .hidethis:checked ~ .checkbox {
-  background-image: url('./checked.png');
-  background-size: 20px;
+    background-image: url("./checked.png");
+    background-size: 20px;
 }

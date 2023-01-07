@@ -55,19 +55,18 @@ const data = [
 
 function ListItem({ name, link, isPurchased }) {
     return (
-        <div className="card w-75 mb-3">
+        <div className="card w-75 mb-3 ListItem">
             <div className="card-body">
-                <div className="card-title">{name}</div>
+                <h5 className="card-title">{name}</h5>
                 <div className="card-text">{link}</div>
             </div>
-            <label>
-                <input
-                    type="checkbox"
-                    className="hidethis"
-                    checked={isPurchased ? "checked" : null}
-                />
-                <div className="checkbox" />
-            </label>
+            <button
+                type="button"
+                className="btn btn-outline-success checkbox"
+                data-bs-toggle="button"
+            >
+                Check
+            </button>
         </div>
     );
 }

@@ -4,11 +4,19 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const test = prompt("hi");
+const test = prompt("user");
+const owner = {
+    username: "owner",
+    listOwner: true,
+};
+const buyer = {
+    username: "owner",
+    listOwner: false,
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <App login={test} />
+        <App login={test === "owner" ? owner : buyer} />
     </React.StrictMode>
 );
 
