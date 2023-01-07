@@ -59,6 +59,10 @@
 }
 
 .modal {
+    display: block;
+}
+
+.spoilermodal {
     position: fixed;
     top: 0;
     left: 0;
@@ -78,7 +82,6 @@
 .checkbox {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    box-sizing: content-box;
 }
 
 .hidethis:checked ~ .checkbox {

@@ -2,27 +2,56 @@ import "./App.css";
 import { useState } from "react";
 import logo from "./gifthub_logo.jpeg";
 
-function Header() {
+function Header({ modal }) {
     return (
         <div className="Header">
             <img src={logo} alt="Really cool logo" className="logo" />
-            <SubmitButton></SubmitButton>
+            <SubmitButton modal={modal}></SubmitButton>
         </div>
     );
 }
 
-function SubmitButton() {
-    const [modalOpened, setModalOpened] = useState(false);
+function SubmitButton({ modal }) {
     return (
         <div className="submitBtn">
-            <p onClick={() => setModalOpened(true)}>+</p>
-            {modalOpened ? <SubmitModal></SubmitModal> : null}
+            <p onClick={() => modal()}>+</p>
         </div>
     );
 }
 
 function SubmitModal() {
-    return <div className="submitModal modal">This is the submit modal</div>;
+    return (
+        <div className="modal" tabIndex="1">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Modal title</h5>
+                        <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div className="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="button" className="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 const data = [
@@ -90,7 +119,7 @@ function Spoiler() {
         return <div></div>;
     } else {
         return (
-            <div className="modal">
+            <div className="spoilermodal">
                 <h1>Spoiler:</h1>
                 <p>
                     This is a warning - the following page displays which items
@@ -109,10 +138,16 @@ function Spoiler() {
 }
 
 function App({ login }) {
+    const [submitModalState, setSubmitModalState] = useState(false);
+    function showSubmitModal() {
+        console.log("here");
+        setSubmitModalState(true);
+    }
     return (
         <div className="App">
             {login ? "" : <Spoiler></Spoiler>}
-            <Header></Header>
+            {submitModalState ? <SubmitModal></SubmitModal> : ""}
+            <Header modal={showSubmitModal}></Header>
             <List></List>
         </div>
     );
