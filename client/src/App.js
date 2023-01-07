@@ -1,57 +1,28 @@
 import "./App.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import logo from "./gifthub_logo.jpeg";
 
-function Header({ modal }) {
+function Header() {
     return (
         <div className="Header">
             <img src={logo} alt="Really cool logo" className="logo" />
-            <SubmitButton modal={modal}></SubmitButton>
+            <SubmitButton></SubmitButton>
         </div>
     );
 }
 
-function SubmitButton({ modal }) {
+function SubmitButton() {
+    const [modalOpened, setModalOpened] = useState(false);
     return (
         <div className="submitBtn">
-            <p onClick={() => modal()}>+</p>
+            <p onClick={() => setModalOpened(true)}>+</p>
+            {modalOpened ? <SubmitModal></SubmitModal> : null}
         </div>
     );
 }
 
 function SubmitModal() {
-    return (
-        <div className="modal" tabIndex="1">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title">Modal title</h5>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </div>
-                    <div className="modal-body">
-                        <p>Modal body text goes here.</p>
-                    </div>
-                    <div className="modal-footer">
-                        <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >
-                            Close
-                        </button>
-                        <button type="button" className="btn btn-primary">
-                            Save changes
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+    return <div className="submitModal modal">This is the submit modal</div>;
 }
 
 const data = [
@@ -82,31 +53,65 @@ const data = [
     },
 ];
 
-function ListItem({ name, link, isPurchased }) {
-    return (
-        <div className="card w-75 mb-3 ListItem">
-            <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <div className="card-text">{link}</div>
-            </div>
-            <button
-                type="button"
-                className="btn btn-outline-success checkbox"
-                data-bs-toggle="button"
+class ListItem extends React.Component {
+    //Removes a list item ONLY in front end (for right now)
+    removeListItem() {
+        this.setState({ visibility: "none" });
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            visibility: true,
+        };
+        this.removeListItem = this.removeListItem.bind(this);
+    }
+
+    render() {
+        return (
+            <div
+                style={{ display: this.state.visibility }}
+                className="card w-75 mb-3 ListItem"
             >
-                Check
-            </button>
-        </div>
-    );
+                <div className="card-body">
+                    <h5 className="card-title">{this.props.name}</h5>
+                    <div className="card-text">{this.props.link}</div>
+                </div>
+                {this.props.loginInfo.listOwner ? (
+                    <button
+                        type="button"
+                        className="btn btn-outline-danger checkbox"
+                        onClick={this.removeListItem}
+                    >
+                        Delete
+                    </button>
+                ) : (
+                    <button
+                        type="button"
+                        className={
+                            this.props.isPurchased
+                                ? "btn btn-outline-success checkbox active"
+                                : "btn btn-outline-success checkbox"
+                        }
+                        data-bs-toggle="button"
+                    >
+                        Check
+                    </button>
+                )}
+            </div>
+        );
+    }
 }
 
-function List() {
+function List({ loginInfo }) {
     const content = data.map((item, index) => (
         <ListItem
             name={item.name}
             link={item.link}
             isPurchased={item.checked}
             key={index}
+            loginInfo={loginInfo}
+            counter={0}
         ></ListItem>
     ));
     return <div className="List">{content}</div>;
@@ -119,7 +124,7 @@ function Spoiler() {
         return <div></div>;
     } else {
         return (
-            <div className="spoilermodal">
+            <div className="modal">
                 <h1>Spoiler:</h1>
                 <p>
                     This is a warning - the following page displays which items
@@ -138,17 +143,11 @@ function Spoiler() {
 }
 
 function App({ login }) {
-    const [submitModalState, setSubmitModalState] = useState(false);
-    function showSubmitModal() {
-        console.log("here");
-        setSubmitModalState(true);
-    }
     return (
         <div className="App">
             {login ? "" : <Spoiler></Spoiler>}
-            {submitModalState ? <SubmitModal></SubmitModal> : ""}
-            <Header modal={showSubmitModal}></Header>
-            <List></List>
+            <Header></Header>
+            <List loginInfo={login}></List>
         </div>
     );
 }
