@@ -285,16 +285,24 @@ function Spoiler() {
     }
 }
 
+function ListList() {}
+
 function App({ login }) {
     const queryParameters = new URLSearchParams(window.location.search);
     const listId = queryParameters.get("listId");
+    const content = listId ? (
+        <List loginInfo={login} listId={listId}></List>
+    ) : (
+        <ListList loginInfo={login}></ListList>
+    );
     return (
         <div className="App">
             {login ? "" : <Spoiler></Spoiler>}
             <Header></Header>
-            <List loginInfo={login} listId={listId}></List>
+            {content}
         </div>
     );
+    // <List loginInfo={login} listId={listId}></List>
 }
 
 export default App;
