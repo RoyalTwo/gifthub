@@ -88,3 +88,11 @@
     background-image: url("./checked.png");
     background-size: 20px;
 }
+
+.row {
+    width: 100%;
+}
+
+.listcard {
+    box-shadow: 7px 8px 17px -7px rgba(189, 189, 189, 1);
+}

@@ -285,7 +285,23 @@ function Spoiler() {
     }
 }
 
-function ListList() {}
+function ListList({ loginInfo }) {
+    return (
+        <div className="row">
+            <div className="col-sm-6">
+                <div className="card w-50 listcard" style={{ height: "400px" }}>
+                    <div className="card-body">
+                        <h5 className="card-title">Title</h5>
+                        <p className="card-text">text</p>
+                        <a href="#" className="btn btn-primary">
+                            Open
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 function App({ login }) {
     const queryParameters = new URLSearchParams(window.location.search);
