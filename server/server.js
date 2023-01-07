@@ -116,18 +116,13 @@ app.get('/users', (req, res) => {
   // handle GET request to retrieve a list of users
 
   // get the users from the database
-  getUsers()
-    .then((users) => {
-      // return the users to the client
+  User.find({}, (error, users) => {
+    if (error) {
+      res.status(500).send(error);
+    } else {
       res.send(users);
-    })
-    .catch((error) => {
-      // log the error to the console
-      console.error(error);
-
-      // return an error message to the client
-      res.status(500).send({ error: 'Error retrieving users' });
-    });
+    }
+  });
 });
 
 app.post('/users', (req, res) => {
