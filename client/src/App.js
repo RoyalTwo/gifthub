@@ -67,13 +67,13 @@ const users = [
     },
     {
         _id: 2,
-        name: "Tyler",
-        password: "1234",
+        name: "Angela",
+        password: "2323",
     },
     {
         _id: 3,
-        name: "Tyler",
-        password: "1234",
+        name: "Bob",
+        password: "3232",
     },
 ];
 const data = [
