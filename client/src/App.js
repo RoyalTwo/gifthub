@@ -54,11 +54,17 @@ const data = [
 ];
 
 class ListItem extends React.Component {
+  //Removes a list item ONLY in front end (for right now)
+  removeListItem() {
+    this.setState({ visibility: 'none' })
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       visibility: true
     }
+    this.removeListItem = this.removeListItem.bind(this)
   }
 
   render() {
@@ -68,7 +74,7 @@ class ListItem extends React.Component {
           <h5 className="card-title">{this.props.name}</h5>
           <div className="card-text">{this.props.link}</div>
         </div>
-        {this.props.loginInfo.listOwner ? <button type="button" className="btn btn-outline-danger checkbox" onClick={() => this.setState({visibility: 'none'})}>Delete</button> : <button type="button" className={this.props.isPurchased ? "btn btn-outline-success checkbox active" : "btn btn-outline-success checkbox"} data-bs-toggle="button">Check</button>}
+        {this.props.loginInfo.listOwner ? <button type="button" className="btn btn-outline-danger checkbox" onClick={this.removeListItem}>Delete</button> : <button type="button" className={this.props.isPurchased ? "btn btn-outline-success checkbox active" : "btn btn-outline-success checkbox"} data-bs-toggle="button">Check</button>}
       </div>
     );
   }
