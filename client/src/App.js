@@ -85,6 +85,9 @@ const data = [
 ];
 
 //Is a class so that we can use state to make invisible or not
+// tyler did this, leave it as a class it's so funny
+// i know it doesn't make sense but keep it
+// PLEASE
 class ListItem extends React.Component {
     //Removes a list item ONLY in front end (for right now)
     removeListItem() {
