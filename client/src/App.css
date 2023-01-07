@@ -9,9 +9,13 @@
 
 .Header {
     width: 100vw;
-    height: 100px;
+    min-height: 80px;
     background-color: black;
     margin-bottom: 10px;
+}
+
+.logo {
+  height: 80px;
 }
 
 .List {
@@ -45,12 +49,6 @@
     background: white;
 }
 
-.uncheckedbox {
-  width: 20px;
-  height: 20px;
-  background-color: #FFFFFF;
-}
-
 .hidethis {
   position: absolute;
   opacity: 0;
@@ -63,11 +61,10 @@
   width: 20px;
   height: 20px;
   background-color: #FFFFFF;
-  border: 2px solid white;
   cursor: pointer;
 }
 
 .hidethis:checked ~ .checkbox {
-  border: 2px solid white;
-  background-color: seagreen;
+  background-image: url('./checkbox.gif');
+  background-size: 20px;
 }

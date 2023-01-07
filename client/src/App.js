@@ -1,8 +1,11 @@
 import "./App.css";
 import { useState } from "react";
+import logo from './gifthub_logo.jpeg'
 
 function Header() {
-    return <div className="Header"></div>;
+    return <div className="Header">
+      <img src={logo} alt="Really cool logo" className="logo" />
+    </div>;
 }
 
 const data = [
