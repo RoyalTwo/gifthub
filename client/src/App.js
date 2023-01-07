@@ -60,7 +60,7 @@ function ListItem({ name, link, isPurchased, loginInfo }) {
         <h5 className="card-title">{name}</h5>
         <div className="card-text">{link}</div>
       </div>
-      {loginInfo.listOwner ? <button type="button" className="btn btn-outline-danger checkbox">Delete</button> : <button type="button" className="btn btn-outline-success checkbox" data-bs-toggle="button">Check</button>}
+      {loginInfo.listOwner ? <button type="button" className="btn btn-outline-danger checkbox">Delete</button> : <button type="button" className={isPurchased ? "btn btn-outline-success checkbox active" : "btn btn-outline-success checkbox"} data-bs-toggle="button">Check</button>}
     </div>
   );
 }
