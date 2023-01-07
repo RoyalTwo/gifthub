@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 
 function Header() {
     return <div className="Header"></div>;
@@ -57,9 +58,35 @@ function List() {
     return <div>{content}</div>;
 }
 
-function App() {
+function Spoiler() {
+    const [hideState, setHideState] = useState(false);
+
+    if (hideState) {
+        return <div></div>;
+    } else {
+        return (
+            <div className="modal">
+                <h1>Spoiler:</h1>
+                <p>
+                    This is a warning - the following page displays which items
+                    have been purchased.
+                </p>
+                <p>
+                    If you do not wish to be spoiled, turn back! Otherwise,
+                    continue.
+                </p>
+                <button className="continue" onClick={() => setHideState(true)}>
+                    Continue
+                </button>
+            </div>
+        );
+    }
+}
+
+function App({ login }) {
     return (
         <div className="App">
+            <Spoiler></Spoiler>
             <Header></Header>
             <List className="List"></List>
         </div>
