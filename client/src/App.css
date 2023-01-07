@@ -40,3 +40,30 @@
     height: 100%;
     background: white;
 }
+
+.uncheckedbox {
+  width: 20px;
+  height: 20px;
+  background-color: #FFFFFF;
+}
+
+.hidethis {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0px;
+  width: 0px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  background-color: #FFFFFF;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.hidethis:checked ~ .checkbox {
+  border: 2px solid white;
+  background-color: seagreen;
+}
