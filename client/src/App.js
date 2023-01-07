@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import logo from "./gifthub_logo.jpeg";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Card from "react-bootstrap/Card";
 
 function Header() {
     const [modalOpened, setModalOpened] = useState(false);
@@ -289,20 +290,19 @@ function ListList({ loginInfo }) {
     return (
         <div className="row">
             <div className="col-sm-6">
-                <div className="card w-50 listcard" style={{ height: "400px" }}>
-                    <div className="card-body">
-                        <h5 className="card-title">Title</h5>
-                        <p className="card-text">text</p>
-                        <a href="#" className="btn btn-primary">
-                            Open
-                        </a>
-                    </div>
-                </div>
+                <Card
+                    style={{ width: "50%", height: "400px" }}
+                    className="listcard"
+                >
+                    <Card.Body>
+                        <Card.Title as={"h3"}>List ID</Card.Title>
+                        <Button variant="primary">Select</Button>
+                    </Card.Body>
+                </Card>
             </div>
         </div>
     );
 }
-
 function App({ login }) {
     const queryParameters = new URLSearchParams(window.location.search);
     const listId = queryParameters.get("listId");
