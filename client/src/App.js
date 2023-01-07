@@ -79,7 +79,7 @@ const users = [
 const data = [
     {
         _id: "1234",
-        userId: '1',
+        userId: "1",
         list: [
             {
                 name: "First",
@@ -109,8 +109,8 @@ const data = [
         ],
     },
     {
-        _id: '2345',
-        userId: '2',
+        _id: "2345",
+        userId: "2",
         list: [
             {
                 name: "Sixth",
@@ -141,7 +141,7 @@ const data = [
     },
     {
         _id: "3456",
-        userId: '3',
+        userId: "3",
         list: [
             {
                 name: "Eleventh",
@@ -240,7 +240,6 @@ function List({ loginInfo, listId }) {
                     isPurchased={item.checked}
                     key={index}
                     loginInfo={loginInfo}
-                    counter={0}
                     isOwner={true}
                 ></ListItem>
             ));
@@ -252,7 +251,6 @@ function List({ loginInfo, listId }) {
                     isPurchased={item.checked}
                     key={index}
                     loginInfo={loginInfo}
-                    counter={0}
                     isOwner={false}
                 ></ListItem>
             ));
