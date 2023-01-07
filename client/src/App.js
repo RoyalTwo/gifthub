@@ -48,11 +48,12 @@ function ListItem({ name, link, isPurchased }) {
 }
 
 function List() {
-    const content = data.map((item) => (
+    const content = data.map((item, index) => (
         <ListItem
             name={item.name}
             link={item.link}
             isPurchased={item.checked}
+            key={index}
         ></ListItem>
     ));
     return <div>{content}</div>;
