@@ -5,18 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const test = prompt("user");
-const owner = {
-    username: "owner",
-    listOwner: true,
-};
-const buyer = {
-    username: "owner",
-    listOwner: false,
-};
+let user;
+user = {
+    username: test
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <App login={test === "owner" ? owner : buyer} />
+        <App login={user} />
     </React.StrictMode>
 );
 
