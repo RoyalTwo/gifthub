@@ -95,7 +95,7 @@ export function Header({ listId, isOwner, userId }) {
 
     return (
         <div className="Header">
-            <img src={logo} alt="Really cool logo" className="logo" />
+            <a href="http://localhost:3000/"><img src={logo} alt="Really cool logo" className="logo" /></a>
             <div className="submitBtn">
                 {isOwner || !listId ? <p onClick={() => setModalOpened(true)}>+</p> : null}
                 {modal}
