@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 
-export function Header({ listId, isOwner }) {
+export function Header({ listId, isOwner, userId }) {
     const [modalOpened, setModalOpened] = useState(false);
 
     let modal;
@@ -62,7 +62,7 @@ export function Header({ listId, isOwner }) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <form>
+                    <form action="http://localhost:2555/lists" method="post">
                         <div className="form-group">
                             <label htmlFor="productName">
                                 List Name
@@ -70,21 +70,24 @@ export function Header({ listId, isOwner }) {
                             <input
                                 type="text"
                                 className="form-control"
-                                id="listNameInput"
+                                id="name"
+                                name="name"
                                 placeholder="Enter Name"
                             />
                         </div>
+                        <input type='text' style={{display: 'none'}} id='userId' name="userId" value={userId} />
+                        <Button
+                            variant="secondary"
+                            onClick={() => setModalOpened(false)}
+                        >
+                            Close
+                        </Button>
+                        <Button variant="primary" type="submit">Save Changes</Button>
                     </form>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button
-                        variant="secondary"
-                        onClick={() => setModalOpened(false)}
-                    >
-                        Close
-                    </Button>
-                    <Button variant="primary">Save Changes</Button>
+
                 </Modal.Footer>
             </Modal>
         )

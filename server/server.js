@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 // use the body-parser middleware to parse the request body
+app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGO_URI, { dbName: 'gifthub' }).then(() => {
@@ -24,7 +25,10 @@ const User = mongoose.model('User', userSchema);
 
 // define the list schema
 const listSchema = new mongoose.Schema({
-  userID: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
+  //userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true }, Commented until we use actual mongodb users
+  userId: { type: String, required: false },
+  name: { type: String, required: false },
+  imgIndex: { type: Number, required: true},
   items: [
     {
       name: { type: String, required: true },
@@ -246,9 +250,7 @@ app.get('/lists/:id', (req, res) => {
     } else {
       // send the list data in the response
       res.send({
-        name: list.name,
-        link: list.link,
-        checked: list.checked
+        name: list.name
       });
     }
   });
@@ -256,10 +258,14 @@ app.get('/lists/:id', (req, res) => {
 
 app.post('/lists', (req, res) => {
   // get the list data from the request body
-  const { name, link, checked } = req.body;
+  console.log(req.body)
+  const { name, userId } = req.body;
+  const items = []
+
+  const imgIndex = 0
 
   // create a new list
-  const list = new List({ name, link, checked });
+  const list = new List({ userId, name, imgIndex, items });
 
   // save the list to the database
   list.save((error) => {
@@ -268,7 +274,7 @@ app.post('/lists', (req, res) => {
       res.status(500).send(error);
     } else {
       // the list was saved successfully
-      res.send(list);
+      res.redirect('http://localhost:3000/');
     }
   });
 });

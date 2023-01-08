@@ -16,7 +16,10 @@ const User = mongoose.model('User', userSchema);
 
 // define the list schema
 const listSchema = new mongoose.Schema({
-  userID: { type: mongoose.Types.ObjectId, ref: 'User', required: true },
+  //userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true }, Commented until we use actual mongodb users
+  userId: { type: String, required: false },
+  name: { type: String, required: false },
+  imgIndex: { type: Number, required: true},
   items: [
     {
       name: { type: String, required: true },
