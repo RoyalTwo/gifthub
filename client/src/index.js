@@ -16,6 +16,9 @@ root.render(
         <App login={user} />
     </React.StrictMode>
 );
+fetch("http://localhost:2555/users")
+    .then((response) => response.json())
+    .then((result) => console.log(result));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
