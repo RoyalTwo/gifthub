@@ -256,6 +256,20 @@ app.get('/lists/:id', (req, res) => {
   });
 });
 
+app.get('/listslist/:userId', (req, res) => {
+  // get the userId from the request parameters
+  const userId = req.params.userId;
+
+  // find the lists in the database
+  List.find({ userId: userId }, (error, lists) => {
+    if (error) {
+      res.status(500).send(error)
+    } else {
+      res.send(lists)
+    }
+  })
+})
+
 app.post('/lists', (req, res) => {
   // get the list data from the request body
   console.log(req.body)
