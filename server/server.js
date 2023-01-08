@@ -6,6 +6,12 @@ const bodyParser = require('body-parser');
 // use the body-parser middleware to parse the request body
 app.use(bodyParser.json());
 
+mongoose.connect("mongodb+srv://everyone:1234@cluster0.zjfxkrd.mongodb.net/?retryWrites=true&w=majority", { dbName: 'gifthub' }).then(() => {
+  console.log('MongoDB Connected')
+});
+
+mongoose.set('strictQuery', false)
+
 // define a user schema
 const userSchema = new mongoose.Schema({
   userName: { type: String, required: true, unique: true },
@@ -132,7 +138,7 @@ function deleteUser(userId) {
     }
   });
 }
-const PORT = 3000;
+const PORT = 2555;
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

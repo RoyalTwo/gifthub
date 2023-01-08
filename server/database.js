@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 // connect to the MongoDB database
-mongoose.connect('mongodb://localhost/mydatabase', { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://everyone:1234@cluster0.zjfxkrd.mongodb.net/?retryWrites=true&w=majority", { dbName: 'gifthub' });
+mongoose.set('strictQuery', false)
 
 // define a user schema
 const userSchema = new mongoose.Schema({
