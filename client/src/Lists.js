@@ -3,9 +3,15 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+const JSON = require('JSON');
+
 const images = [require('./art/gifthub_present_1.png')]
 const db = require('./db.js');
 const lists = db.lists;
+
+const db2 = require('./db2.js');
+const list = db2.list;
+console.log(list)
 
 
 //Is a class so that we can use state to make invisible or not
@@ -68,8 +74,9 @@ class ListItem extends React.Component {
   export function List({ loginInfo, listId }) {
     let content;
     for (let i = 0; i < lists.length; i++) {
-      if (lists[i].userId === loginInfo.userId && lists[i]._id === listId) {
-        content = lists[i].list.map((item, index) => (
+      if (lists[i].userId === loginInfo.userId && lists[i]._id === listId && lists[i].lists) {
+        console.log(lists[i].lists)
+        content = lists[i].lists.map((item, index) => (
           <ListItem
             name={item.name}
             link={item.link}
@@ -79,8 +86,8 @@ class ListItem extends React.Component {
             isOwner={true}
           ></ListItem>
         ));
-      } else if (lists[i]._id === listId) {
-        content = lists[i].list.map((item, index) => (
+      } else if (lists[i]._id === listId && lists[i].lists) {
+        content = lists[i].lists.map((item, index) => (
           <ListItem
             name={item.name}
             link={item.link}
@@ -90,6 +97,8 @@ class ListItem extends React.Component {
             isOwner={false}
           ></ListItem>
         ));
+      } else {
+        console.log(lists[i].lists)
       }
     }
   
@@ -106,7 +115,7 @@ class ListItem extends React.Component {
           <Card.Body>
             <Card.Img varient="top" src={images[listToDisplay.imgIndex]} className='list-list-image'></Card.Img>
             <Card.Title as={"h3"}>{listToDisplay.name}</Card.Title>
-            <Button variant="primary"><a href={'/?listId=' + listToDisplay._id} className="card-button-link">Select</a></Button>
+            <Button variant="primary"><a href={'http://localhost:2555/lists/' + listToDisplay._id} className="card-button-link">Select</a></Button>
           </Card.Body>
         </Card>
       </div>

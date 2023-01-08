@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const JSON = require('JSON')
+const fs = require('fs');
+const circularJson = require('circular-json');
 require('dotenv').config();
 
 // use the body-parser middleware to parse the request body
@@ -29,7 +32,7 @@ const listSchema = new mongoose.Schema({
   userId: { type: String, required: false },
   name: { type: String, required: false },
   imgIndex: { type: Number, required: true},
-  items: [
+  lists: [
     {
       name: { type: String, required: true },
       link: { type: String },
@@ -249,9 +252,8 @@ app.get('/lists/:id', (req, res) => {
       res.status(500).send(error);
     } else {
       // send the list data in the response
-      res.send({
-        name: list.name
-      });
+      fs.writeFileSync('./client/src/db2.js', 'export const list = ' + JSON.stringify(list))
+      res.redirect('http://localhost:3000/?listId=' + list.id)
     }
   });
 });
@@ -265,7 +267,8 @@ app.get('/listslist/:userId', (req, res) => {
     if (error) {
       res.status(500).send(error)
     } else {
-      res.send(lists)
+      fs.writeFileSync('./client/src/db.js', 'export const lists = ' + JSON.stringify(lists))
+      res.redirect('http://localhost:3000/')
     }
   })
 })
@@ -274,12 +277,12 @@ app.post('/lists', (req, res) => {
   // get the list data from the request body
   console.log(req.body)
   const { name, userId } = req.body;
-  const items = []
+  const lists = []
 
   const imgIndex = 0
 
   // create a new list
-  const list = new List({ userId, name, imgIndex, items });
+  const list = new List({ userId, name, imgIndex, lists });
 
   // save the list to the database
   list.save((error) => {

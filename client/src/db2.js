@@ -1,0 +1,1 @@
+export const list = {"_id":"63ba4d24075e16c1455dda72","userId":"1","name":"One2","imgIndex":0,"__v":0,"lists":[{"_id":"63baee9798ccd0ad3819936f","checked":false,"link":"https://discord.com/channels/1045024966321651762/1045037247797399562","name":"First"}]}
