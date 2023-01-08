@@ -41,7 +41,7 @@ function App({ login }) {
   );
   return (
     <div className="App">
-      <Header listId={listId} isOwner={isOwner}></Header>
+      <Header listId={listId} isOwner={isOwner} userId={login.userId}></Header>
       <div className="row">
         {content}
       </div>

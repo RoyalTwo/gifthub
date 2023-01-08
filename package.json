@@ -2,7 +2,10 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+<<<<<<< HEAD
     "mongodb": "^4.13.0",
+=======
+>>>>>>> 4dd21b42ba5cb5d3e0fa75aff92fb92c571033c5
     "mongoose": "^6.8.3"
   }
 }

@@ -1,10 +1,9 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+require('dotenv').config()
 
 // connect to the MongoDB database
-mongoose.connect(
-    "mongodb+srv://everyone:1234@cluster0.zjfxkrd.mongodb.net/?retryWrites=true&w=majority",
-    { useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGO_URI, { dbName: 'gifthub' });
+mongoose.set('strictQuery', false)
 
 // define a user schema
 const userSchema = new mongoose.Schema({
@@ -17,14 +16,17 @@ const User = mongoose.model("User", userSchema);
 
 // define the list schema
 const listSchema = new mongoose.Schema({
-    userID: { type: mongoose.Types.ObjectId, ref: "User", required: true },
-    items: [
-        {
-            name: { type: String, required: true },
-            link: { type: String },
-            checked: { type: Boolean, default: false },
-        },
-    ],
+  //userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true }, Commented until we use actual mongodb users
+  userId: { type: String, required: false },
+  name: { type: String, required: false },
+  imgIndex: { type: Number, required: true},
+  items: [
+    {
+      name: { type: String, required: true },
+      link: { type: String },
+      checked: { type: Boolean, default: false }
+    }
+  ]
 });
 
 // create a model from the schema
