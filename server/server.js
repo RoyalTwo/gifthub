@@ -1,13 +1,8 @@
 const express = require("express");
 const app = express();
-<<<<<<< HEAD
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-=======
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv').config();
->>>>>>> 4dd21b42ba5cb5d3e0fa75aff92fb92c571033c5
 
 // use the body-parser middleware to parse the request body
 app.use(express.urlencoded({ extended: false }));
@@ -30,16 +25,6 @@ const User = mongoose.model("User", userSchema);
 
 // define the list schema
 const listSchema = new mongoose.Schema({
-<<<<<<< HEAD
-    userID: { type: mongoose.Types.ObjectId, ref: "User", required: true },
-    items: [
-        {
-            name: { type: String, required: true },
-            link: { type: String },
-            checked: { type: Boolean, default: false },
-        },
-    ],
-=======
   //userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true }, Commented until we use actual mongodb users
   userId: { type: String, required: false },
   name: { type: String, required: false },
@@ -51,7 +36,6 @@ const listSchema = new mongoose.Schema({
       checked: { type: Boolean, default: false }
     }
   ]
->>>>>>> 4dd21b42ba5cb5d3e0fa75aff92fb92c571033c5
 });
 
 // create a model from the schema
@@ -254,41 +238,6 @@ app.get("/lists/:id", (req, res) => {
     // get the list ID from the request parameters
     const listId = req.params.id;
 
-<<<<<<< HEAD
-    // find the list in the database
-    List.findById(listId, (error, list) => {
-        if (error) {
-            // handle the error
-            res.status(500).send(error);
-        } else {
-            // send the list data in the response
-            res.send({
-                name: list.name,
-                link: list.link,
-                checked: list.checked,
-            });
-        }
-    });
-});
-
-app.post("/lists", (req, res) => {
-    // get the list data from the request body
-    const { name, link, checked } = req.body;
-
-    // create a new list
-    const list = new List({ name, link, checked });
-
-    // save the list to the database
-    list.save((error) => {
-        if (error) {
-            // handle the error
-            res.status(500).send(error);
-        } else {
-            // the list was saved successfully
-            res.send(list);
-        }
-    });
-=======
   // find the list in the database
   List.findById(listId, (error, list) => {
     if (error) {
@@ -338,7 +287,6 @@ app.post('/lists', (req, res) => {
       res.redirect('http://localhost:3000/');
     }
   });
->>>>>>> 4dd21b42ba5cb5d3e0fa75aff92fb92c571033c5
 });
 
 app.put("/lists/:id", (req, res) => {
