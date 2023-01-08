@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 // connect to the MongoDB database
-mongoose.connect("mongodb+srv://everyone:1234@cluster0.zjfxkrd.mongodb.net/?retryWrites=true&w=majority", { dbName: 'gifthub' });
+mongoose.connect(process.env.MONGO_URI, { dbName: 'gifthub' });
 mongoose.set('strictQuery', false)
 
 // define a user schema

@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 // use the body-parser middleware to parse the request body
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb+srv://everyone:1234@cluster0.zjfxkrd.mongodb.net/?retryWrites=true&w=majority", { dbName: 'gifthub' }).then(() => {
+mongoose.connect(process.env.MONGO_URI, { dbName: 'gifthub' }).then(() => {
   console.log('MongoDB Connected')
 });
 
